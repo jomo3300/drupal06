@@ -1,0 +1,91 @@
+h2. Drupal Commerce 2 Sandbox Project (Bootstrap Subtheme, nut shop with product variations)
+
+h3. Installation and Base Configuration
+
+h4. Eclipse/File/New/PHP from Composer Package
+
+looking for 'drupal commerce'
+selecting drupalcommerce/project-base
+
+h4. configure virtual host
+
+within windows/system32/drivers/etc/hosts enter 
+	'127.0.0.1	drupal06.localhost'
+	
+within dev/xampp/apache/conf/extra/httpd-vhosts enter:
+	<VirtualHost *:80>
+	    ServerAdmin joerg.moebius@gmx.net
+	    DocumentRoot "C:/dev/xampp/htdocs/drupal06/web"
+	    ServerName drupal06.localhost
+	    ErrorLog "logs/error.log"
+	    CustomLog "logs/access.log" common
+	</VirtualHost>
+
+h4. create database
+
+create mysql database drupal06
+
+h4. Install and configure Drupal Commerce Site
+
+add
+	drupal06@localhost.com
+to mail accounts
+
+enter
+	http://drupal06.localhost
+and follow the installation instructions (using e.a. drupal06@localhost.com)
+
+within web/sites/default/settings.php uncomment trusted host settings and enter 'drupal06.localhost'
+	 $settings['trusted_host_patterns'] = array(
+	  '^drupal06.localhost$',
+	 );	
+
+h4. Create Shop and Products/Product Variations
+
+(as admin)
+
+commerce/configuration/store/currencies -> add 'Euro'
+
+commerce/configuration/store/ -> add Store 'Nut Store'
+
+commerce/configuration/product-variation-types -> add Product Variation Type 'Nuts'
+
+commerce/configuratioon/product-types -> add Product Type 'Nuts'
+
+commerce/product-attributes -> add Product Attributes 'Flavor', 'Weight', 'Packing'
+(seems that 
+- attribute's entry sequence is sequence of displaying in edit form (sequence in 'managing fields' has no effect) and 
+- values's entry sequence is sequence of displaying in select lists (sequence in 'attribute fields/values' has no effect)
+
+commerce/configuration/product-variation-types -> configure fields, forms and display
+
+structure/views -> add view 'nuts', 'almonds', 'peanuts'
+(seem that
+- view's machine name is only on creation editable.
+)
+	machine name: products_nuts_list (etc.)
+	price column change within field settings
+	price column right alignment within table settings
+
+h4. Install, Configure, Apply Bootstrap Subtheme
+
+Copy bootstrap directory of download bootstrap-7.x-3.16.zip to web/themes/contrib
+copy bootstrap/starterkits/cdn to web/themes/custom
+
+rename web/themes/custom/cdn to web/themes/custom/m1shop
+replace in all filenames SUBTHEME with m1shop
+	SUBTHEME.starterkit.yml
+	SUBTHEME.libraries.yml
+	SUBTHEME.theme
+	config/install/SUBTHEME.settings
+	
+replace in filenames starterkit with info
+	m1shop.starterkit.yml
+replace in all files SUBTHEME with m1shop
+	m1shop.info.yml
+	config/schema/m1shop.schema.yml
+
+
+
+h2. To Dos
+
