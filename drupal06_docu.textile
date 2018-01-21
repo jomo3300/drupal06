@@ -85,6 +85,20 @@ replace in all files SUBTHEME with m1shop
 	m1shop.info.yml
 	config/schema/m1shop.schema.yml
 
+h4. Setup Git
+
+Outside Eclipse:
+
+at console (within drupal06 directory): 
+	git init -> makes this directory a git repository
+	git add *.* -> adds all directories and files to the new directory
+	git commit -> gets all addes objects to the main branch 'master', which is created at the same time
+at https:/github/jomo3300: create an empty repository named drupal06
+at console (within drupal06 directory):
+	git remote origin add https://github.com/jomo3300/drupal06.git
+	git push
+
+
 
 
 h2. To Dos
