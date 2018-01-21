@@ -97,8 +97,11 @@ at https:/github/jomo3300: create an empty repository named drupal06
 at console (within drupal06 directory):
 	git remote origin add https://github.com/jomo3300/drupal06.git
 	git push
+at eclipse
+	do modifications
+	right click and Team/commit...
 
-
+	
 
 h2. To Dos
 
